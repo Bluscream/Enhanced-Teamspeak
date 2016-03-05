@@ -1,0 +1,69 @@
+{
+    "manifest_version": 2,
+    "name": "Teamspeak+",
+    "version": "0.1",
+    "description": "This extension adds cool features to forum.teamspeak.com, r4p3.net and planetteamspeak.com",
+    "homepage_url": "http://www.r4p3.net/",
+    "options_page": "options.html",
+    "browser_action": {
+	"default_icon": "resources/icon.png",
+	"default_popup": "html/popup.html",
+	"default_title": "Shoutbox"
+    },
+    "icons": {
+        "32": "resources/icon.png"
+    },
+    "permissions": [
+        "storage",
+        "http*://forum.teamspeak.com/*",
+	"http*://planetteamspeak.com/*",
+	"http*://r4p3.net/*"
+    ],
+    "web_accessible_resources": [
+        "resources/icon.png"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+		"http*://r4p3.net/*"
+            ],
+            "exclude_matches": [
+                "https://r4p3.net/register*",
+                "https://r4p3.net/login*"
+            ],
+            "js": [
+                "js/inc/jQuery.min.js",
+                "js/inc/jquery-ui.min.js",
+                "js/inc/jquery.livequery.js"
+            ],
+            "css": [
+                "css/r4p3/main.css",
+                "css/r4p3/dark.css"
+            ]
+        },
+        {
+            "matches": [
+		"http*://forum.teamspeak.com/*"
+            ],
+            "js": [
+                "js/inc/jQuery.min.js",
+                "js/inc/jquery.attrchange.js"
+            ],
+            "css": [
+                "css/ts/forum.main.css"
+            ]
+        },
+        {
+            "matches": [
+		"http*://planetteamspeak.com/*"
+            ],
+            "js": [
+                "js/inc/jquery.livequery.js",
+                "js/inc/jquery.attrchange.js"
+            ],
+            "css": [
+                "css/pts/main.css"
+            ]
+        }
+    ]
+}
